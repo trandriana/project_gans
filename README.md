@@ -8,6 +8,6 @@ In parallel, we transforming the data collected, and store it in a SQL database.
 
 To run the codes, have your MySQL password and APIs keys ready. Store them in 'secret_keys.env' as follows:
 
-        - API_key = OpenWeatherMap API key
-        - mysql_password = MySQL password
-        - RapidAPI_Key = RapidAPI key
+         API_key = OpenWeatherMap API key
+         mysql_password = MySQL password
+         RapidAPI_Key = RapidAPI key
