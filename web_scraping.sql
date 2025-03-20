@@ -55,10 +55,48 @@ CREATE TABLE population (
 SELECt *
 FROM population;
 
-
+/***************************
+Creating the table 'weather'
+***************************/
+CREATE TABLE weather (
+	WeatherId INT AUTO_INCREMENT,
+    CityId INT,
+    CityName VARCHAR(45) NOT NULL,
+    ForecastTime DATETIME NOT NULL,
+    Temperature FLOAT NOT NULL,
+    WeatherCondition VARCHAR(45) NOT NULL,
+    RainVolume FLOAT NOT NULL,
+    ProbOfRain FLOAT NOT NULL,
+    DateOfRetrieval DATETIME,
+    PRIMARY KEY (WeatherId),
+    FOREIGN KEY (CityId) REFERENCES City (CityId) 
+);
 
 SELECT *
-FROM city
-LEFT JOIN country USING(CityID)
-LEFT JOIN geolocation USING(CityID)
-LEFT JOIN population USING(CityID);
+FROM weather;
+
+/***************************
+Creating the table 'NearbyAirport'
+***************************/
+CREATE TABLE NearbyAirport (
+IATA VARCHAR(3) NOT NULL,
+CityId INT NOT NULL,
+PRIMARY KEY (IATA),
+FOREIGN KEY (CityId) REFERENCES City (CityId)
+);
+
+SELECT *
+FROM NearbyAirport;
+
+/***************************
+Creating the table 'NearbyAirport'
+***************************/
+CREATE TABLE FlightArrivals (
+IATA VARCHAR (3),
+ScheduledTime DATETIME,
+DateOfRetrieval DATETIME,
+FOREIGN KEY (IATA) REFERENCES NearbyAirport (IATA)
+);
+
+SELECT *
+FROM FlightArrivals;
